@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "424236753755",
+    "project_id": "indigenous-87151",
+    "storage_bucket": "indigenous-87151.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424236753755:android:e04304780079231e64707e",
+        "android_client_info": {
+          "package_name": "com.example.medi_sheba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "424236753755-403r5oijuhvjibpfm53jfn7s2rggvlvk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6wyds0o8GimI8IBkv2NDX28-mE3jfEmo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "424236753755-403r5oijuhvjibpfm53jfn7s2rggvlvk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
