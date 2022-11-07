@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavHostController
 import com.example.medi_sheba.model.Class
+import com.example.medi_sheba.presentation.screenItem.ScreenItem
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -62,6 +63,7 @@ fun ELearningScreen(navController: NavHostController, auth: FirebaseAuth, eLearn
                 ClassBox(name = singleClass.className, route = singleClass.route, modifier = Modifier.clickable {
 //                    val intent = Intent(context, YoutubePlayerActivity::class.java)
 //                    startActivity(context, intent, null)
+                    navController.navigate(ScreenItem.PlayerScreenItem.route)
                 })
             }
         }

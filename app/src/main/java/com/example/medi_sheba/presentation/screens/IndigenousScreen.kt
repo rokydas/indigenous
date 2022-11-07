@@ -28,10 +28,10 @@ import com.google.firebase.auth.FirebaseAuth
 @Composable
 fun IndigenousScreen(navController: NavHostController, auth: FirebaseAuth, indigenous: String) {
 
-    val categoryList = listOf (
-        Category(1, "Alphabet", R.drawable.alphabet, ""),
-        Category(2, "History", R.drawable.history, ""),
-        Category(3, "Cultural Activities", R.drawable.cultural, ""),
+    val categoryList = listOf(
+        Category(1, "Alphabet", R.drawable.alphabet, "alphabet"),
+        Category(2, "History", R.drawable.history, "history"),
+        Category(3, "Cultural Activities", R.drawable.cultural, "cultural"),
         Category(4, "Literature", R.drawable.literature, "")
     )
 
@@ -70,7 +70,13 @@ fun IndigenousScreen(navController: NavHostController, auth: FirebaseAuth, indig
                 ) { category ->
                     CategoryCard(
                         modifier = Modifier.clickable {
+                            if (category.route == "alphabet") {
 
+                            } else if (category.route == "history") {
+                                navController.navigate(ScreenItem.HistoryScreenItem.route)
+                            } else if (category.route == "cultural") {
+                                navController.navigate(ScreenItem.CulturalActivitiesItem.route)
+                            }
                         },
                         name = category.name,
                         contentName = category.name,

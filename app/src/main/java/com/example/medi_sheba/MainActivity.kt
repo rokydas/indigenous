@@ -74,6 +74,15 @@ class MainActivity : ComponentActivity() {
                                 ELearningScreen(navController = navController, auth, eLearning)
                             }
                         }
+                        composable(route = ScreenItem.HistoryScreenItem.route) {
+                            HistoryScreen(navController = navController)
+                        }
+                        composable(route = ScreenItem.CulturalActivitiesItem.route) {
+                            CulturalScreen(navController = navController)
+                        }
+                        composable(route = ScreenItem.PlayerScreenItem.route) {
+                            PlayerScreen(navController = navController)
+                        }
                     }
                 }
             }

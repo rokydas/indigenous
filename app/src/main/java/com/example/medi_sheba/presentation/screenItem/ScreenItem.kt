@@ -10,4 +10,8 @@ sealed class ScreenItem(val route: String) {
     object UpdateProfileScreenItem: ScreenItem("update_profile_screen")
     object ELearningScreenItem: ScreenItem("e-learning-screen")
     object IndigenousScreenItem: ScreenItem("indigenous")
+
+    object HistoryScreenItem: ScreenItem("history")
+    object CulturalActivitiesItem: ScreenItem("cultural")
+    object PlayerScreenItem: ScreenItem("player-screen")
 }
