@@ -36,7 +36,10 @@ fun IndigenousScreen(navController: NavHostController, auth: FirebaseAuth, indig
     )
 
     Scaffold(
-        modifier = Modifier.background(Color(0xFFf1faff))
+        modifier = Modifier.background(Color(0xFFf1faff)),
+        topBar = {
+            AppBar(navController = navController, title = "Indigenous Community")
+        }
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),

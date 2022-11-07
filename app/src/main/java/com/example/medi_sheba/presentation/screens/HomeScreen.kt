@@ -4,8 +4,7 @@ package com.example.medi_sheba.presentation.screens
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -28,17 +27,19 @@ import com.example.medi_sheba.presentation.screenItem.ScreenItem
 import com.example.medi_sheba.presentation.util.gridItems
 import com.google.firebase.auth.FirebaseAuth
 import com.example.medi_sheba.R
-import androidx.compose.foundation.Image
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeScreen(navController: NavController, auth: FirebaseAuth) {
 
-//    val profileController = ProfileController()
-//    val user = profileController.user.observeAsState()
-//    profileController.getUser(auth.currentUser!!.uid)
+    val communityCategoryList = listOf (
+        Category(1, "Chakma", R.drawable.chakma, "chakma"),
+        Category(2, "Marma", R.drawable.marma, "marma"),
+        Category(3, "Tangchangya", R.drawable.tangchangya, "tangchangya"),
+        Category(4, "Tripura", R.drawable.tripura, "tripura")
+    )
 
-    val categoryList = listOf (
+    val eLearningCategoryList = listOf (
         Category(1, "Chakma", R.drawable.chakma, "chakma"),
         Category(2, "Marma", R.drawable.marma, "marma"),
         Category(3, "Tangchangya", R.drawable.tangchangya, "tangchangya"),
@@ -52,106 +53,63 @@ fun HomeScreen(navController: NavController, auth: FirebaseAuth) {
                 title = "Home"
             )
         },
-        modifier = Modifier.background(Color(0xFFf1faff))
+        modifier = Modifier.background(Color(0xFFB0D5E9)),
+        topBar = {
+            AppBar(navController = navController, title = "Home")
+        }
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
-            Column(
+            LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(bottom = 20.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .padding(horizontal = 20.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Spacer(modifier = Modifier.height(20.dp))
-                Text(
-                    "Indigenous\ne-learning",
-                    style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 30.sp)
-                )
-                Spacer(modifier = Modifier.height(20.dp))
-//                Row(
-//                    horizontalArrangement = Arrangement.SpaceAround
-//                ) {
-//                    Box(
-//                        modifier = Modifier
-//                            .padding(horizontal = 20.dp, vertical = 10.dp)
-//                            .shadow(5.dp, shape = RoundedCornerShape(10.dp))
-//                            .background(Color.White)
-//                            .padding(vertical = 15.dp, horizontal = 25.dp)
-//                            .clickable {
-//                                navController.currentBackStackEntry?.savedStateHandle?.set("indigenous", "chakma")
-//                                navController.navigate(ScreenItem.IndigenousScreenItem.route)
-//                            },
-//                        contentAlignment = Alignment.Center
-//                    ) {
-//                        Text(text = "Chakma", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 20.sp))
-//                    }
-//                    Box(
-//                        modifier = Modifier
-//                            .padding(horizontal = 20.dp, vertical = 10.dp)
-//                            .shadow(5.dp, shape = RoundedCornerShape(10.dp))
-//                            .background(Color.White)
-//                            .padding(vertical = 15.dp, horizontal = 25.dp)
-//                            .clickable {
-//                                navController.currentBackStackEntry?.savedStateHandle?.set("indigenous", "marma")
-//                                navController.navigate(ScreenItem.IndigenousScreenItem.route)
-//                            },
-//                        contentAlignment = Alignment.Center
-//                    ) {
-//                        Text(text = "Marma", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 20.sp))
-//                    }
-//                }
-//                Spacer(modifier = Modifier.height(20.dp))
-//                Row(
-//                    horizontalArrangement = Arrangement.SpaceAround
-//                ) {
-//                    Box(
-//                        modifier = Modifier
-//                            .padding(horizontal = 20.dp, vertical = 10.dp)
-//                            .shadow(5.dp, shape = RoundedCornerShape(10.dp))
-//                            .background(Color.White)
-//                            .padding(vertical = 15.dp, horizontal = 25.dp)
-//                            .clickable {
-//                                navController.currentBackStackEntry?.savedStateHandle?.set("indigenous", "tripura")
-//                                navController.navigate(ScreenItem.IndigenousScreenItem.route)
-//                            },
-//                        contentAlignment = Alignment.Center
-//                    ) {
-//                        Text(text = "Tripura", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 20.sp))
-//                    }
-//                    Box(
-//                        modifier = Modifier
-//                            .padding(horizontal = 20.dp, vertical = 10.dp)
-//                            .shadow(5.dp, shape = RoundedCornerShape(10.dp))
-//                            .background(Color.White)
-//                            .padding(vertical = 15.dp, horizontal = 25.dp)
-//                            .clickable {
-//                                navController.currentBackStackEntry?.savedStateHandle?.set("indigenous", "rakhaine")
-//                                navController.navigate(ScreenItem.IndigenousScreenItem.route)
-//                            },
-//                        contentAlignment = Alignment.Center
-//                    ) {
-//                        Text(text = "Rakhaine", style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 20.sp))
-//                    }
-//                }
-                LazyColumn(
-                    contentPadding = PaddingValues(10.dp),
+                item {
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Text(
+                        "Indigenous Community",
+                        style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 25.sp)
+                    )
+                    Spacer(modifier = Modifier.height(20.dp))
+                }
+                gridItems(
+                    data = communityCategoryList,
+                    columnCount = 2,
                     modifier = Modifier
-                        .fillMaxSize()
-                ) {
-                    gridItems(
-                        data = categoryList,
-                        columnCount = 2,
-                        modifier = Modifier
-                    ) { category ->
-                        CategoryCard(
-                            modifier = Modifier.clickable {
-                                navController.currentBackStackEntry?.savedStateHandle?.set("indigenous", category.route)
-                                navController.navigate(ScreenItem.IndigenousScreenItem.route)
-                            },
-                            name = category.name,
-                            contentName = category.name,
-                            painter = painterResource(category.image)
-                        )
-                    }
+                ) { category ->
+                    CategoryCard(
+                        modifier = Modifier.clickable {
+                            navController.currentBackStackEntry?.savedStateHandle?.set("indigenous", category.route)
+                            navController.navigate(ScreenItem.IndigenousScreenItem.route)
+                        },
+                        name = category.name,
+                        contentName = category.name,
+                        painter = painterResource(category.image)
+                    )
+                }
+                item {
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Text(
+                        "Indigenous e-learning",
+                        style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 25.sp)
+                    )
+                    Spacer(modifier = Modifier.height(20.dp))
+                }
+                gridItems(
+                    data = eLearningCategoryList,
+                    columnCount = 2,
+                    modifier = Modifier
+                ) { category ->
+                    CategoryCard(
+                        modifier = Modifier.clickable {
+                            navController.currentBackStackEntry?.savedStateHandle?.set("e-learning", category.route)
+                            navController.navigate(ScreenItem.ELearningScreenItem.route)
+                        },
+                        name = category.name,
+                        contentName = category.name,
+                        painter = painterResource(category.image)
+                    )
                 }
             }
         }
@@ -187,4 +145,3 @@ fun CategoryCard(
         )
     }
 }
-

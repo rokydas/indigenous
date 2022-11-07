@@ -68,6 +68,12 @@ class MainActivity : ComponentActivity() {
                                 IndigenousScreen(navController = navController, auth, indigenous)
                             }
                         }
+                        composable(route = ScreenItem.ELearningScreenItem.route) {
+                            val eLearning = navController.previousBackStackEntry?.savedStateHandle?.get<String>("e-learning")
+                            eLearning?.let {
+                                ELearningScreen(navController = navController, auth, eLearning)
+                            }
+                        }
                     }
                 }
             }

@@ -8,6 +8,6 @@ sealed class ScreenItem(val route: String) {
     object IntroScreenItem: ScreenItem("intro_screen")
     object LoginScreenItem: ScreenItem("login_screen")
     object UpdateProfileScreenItem: ScreenItem("update_profile_screen")
-
+    object ELearningScreenItem: ScreenItem("e-learning-screen")
     object IndigenousScreenItem: ScreenItem("indigenous")
 }
